@@ -1,0 +1,91 @@
+.header-bar{
+  padding: 1rem 2rem;
+}
+
+.footer {
+  text-align: center;
+  margin-bottom: 3rem;
+  margin-top: 1rem;
+}
+
+.table .thead-dark th.col-detractor{
+  color: #ff6363;
+}
+
+.table .thead-dark th.col-promoter{
+  color: #ca96fa;
+}
+
+.container.survey-group{
+  margin-bottom: 2rem;
+}
+
+.survey-group .group-name{
+  font-size: 1.5rem;
+}
+
+.chart-box{
+  margin: 2rem;
+  border: #dbd7d7 solid 1px;
+  min-width:40rem;
+}
+
+.chart-box .header{
+  font-size: 1.2rem;
+  text-align: center;
+  color: #6b6b6b;
+  text-transform: capitalize;
+}
+
+.textEditor {
+  border: transparent solid 2px;
+  border-radius: 0.25rem;
+  padding: 0.5em 0;
+  margin: 0.25rem;
+}
+
+.textEditor:hover {
+  border: transparent solid 2px;
+  background-color:rgba(54, 162, 235, 0.2);
+}
+
+.textEditor:focus {
+  padding: 0.5em;
+  border: #6b6b6b solid 2px;
+  background-color:rgba(54, 162, 235, 0.2);
+}
+
+.inlineTextEditor-sm {
+  border: transparent solid 0px;
+  border-radius: 0.25rem;
+  padding: 0;
+  margin: 0;
+}
+
+.inlineTextEditor-sm:hover {
+  background-color:rgba(54, 162, 235, 0.2);
+}
+
+.displayText {
+  color: #6b6b6b;
+  font-style: italic;
+}
+
+.btn-report {
+  font-size: 1.5rem;
+  border-radius: 50%;
+  color: #6c757d;
+  background-color: #ffffff;
+  text-align: center;
+  vertical-align: middle;
+  border: 1px solid #6c757d;
+  padding: .75rem 1rem;
+  line-height: 1rem;
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.btn-report:hover {
+  color: #fff;
+  background-color: #5a6268;
+  border-color: #545b62;
+}

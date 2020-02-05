@@ -1,20 +1,73 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
+<div class="container-fluid header-bar">
+  <button class="btn-report float-right" (click)="downloadPdfReport()" placement="left" ngbTooltip="Generate PDF Report"><fa-icon [icon]="btnReport"></fa-icon></button>
 </div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/cli">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+<div id="nfs_report" class="container-fluid">
+  <div class="container survey-group" *ngFor="let surveyGroup of surveyGroups; let groupIndex = index">
+    <div class="group-name">
+      <input class="textEditor" [(ngModel)]="surveyGroup.displayName" style="width:80%" placeholder="Survey Group Name" maxlength="50">
+      <button type="button" class="btn btn-outline-danger btn-sm float-right" (click)="removeSurveyGroup(groupIndex)" placement="left" ngbTooltip="Delete This Project Group"><fa-icon [icon]="btnDeleteIcon"></fa-icon></button>
+    </div>
+    <div class="table-responsive">
+      <table class="table" id="table-{{surveyGroup.id}}">
+        <thead class="thead-dark">
+        <tr>
+          <th>Project</th>
+          <th>Students</th>
+          <th class="col-detractor">0</th>
+          <th class="col-detractor">1</th>
+          <th class="col-detractor">2</th>
+          <th class="col-detractor">3</th>
+          <th class="col-detractor">4</th>
+          <th class="col-detractor">5</th>
+          <th class="col-detractor">6</th>
+          <th>7</th>
+          <th>8</th>
+          <th class="col-promoter">9</th>
+          <th class="col-promoter">10</th>
+          <th>NPS</th>
+          <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let surveyResult of surveyGroup.surveyResults; let resultIndex = index">
+          <td><input class="inlineTextEditor-sm" [(ngModel)]="surveyResult.project" placeholder="Project Name" maxlength="40" (change)="updateChartLabels(groupIndex, resultIndex)" /></td>
+          <td class="displayText">{{surveyResult.calTotalStudent()}}</td>
+          <td><input class="inlineTextEditor-sm" [(ngModel)]="surveyResult.score0Student" (change)="updateChart(groupIndex)" style="width:2em" pattern="[0-9]*" maxlength="3" /></td>
+          <td><input class="inlineTextEditor-sm" [(ngModel)]="surveyResult.score1Student" (change)="updateChart(groupIndex)" style="width:2em" pattern="[0-9]*" maxlength="3" /></td>
+          <td><input class="inlineTextEditor-sm" [(ngModel)]="surveyResult.score2Student" (change)="updateChart(groupIndex)" style="width:2em" pattern="[0-9]*" maxlength="3" /></td>
+          <td><input class="inlineTextEditor-sm" [(ngModel)]="surveyResult.score3Student" (change)="updateChart(groupIndex)" style="width:2em" pattern="[0-9]*" maxlength="3" /></td>
+          <td><input class="inlineTextEditor-sm" [(ngModel)]="surveyResult.score4Student" (change)="updateChart(groupIndex)" style="width:2em" pattern="[0-9]*" maxlength="3" /></td>
+          <td><input class="inlineTextEditor-sm" [(ngModel)]="surveyResult.score5Student" (change)="updateChart(groupIndex)" style="width:2em" pattern="[0-9]*" maxlength="3" /></td>
+          <td><input class="inlineTextEditor-sm" [(ngModel)]="surveyResult.score6Student" (change)="updateChart(groupIndex)" style="width:2em" pattern="[0-9]*" maxlength="3"  /></td>
+          <td><input class="inlineTextEditor-sm" [(ngModel)]="surveyResult.score7Student" (change)="updateChart(groupIndex)" style="width:2em" pattern="[0-9]*" maxlength="3" /></td>
+          <td><input class="inlineTextEditor-sm" [(ngModel)]="surveyResult.score8Student" (change)="updateChart(groupIndex)" style="width:2em" pattern="[0-9]*" maxlength="3" /></td>
+          <td><input class="inlineTextEditor-sm" [(ngModel)]="surveyResult.score9Student" (change)="updateChart(groupIndex)" style="width:2em" pattern="[0-9]*" maxlength="3" /></td>
+          <td><input class="inlineTextEditor-sm" [(ngModel)]="surveyResult.score10Student" (change)="updateChart(groupIndex)" style="width:2em" pattern="[0-9]*" maxlength="3" /></td>
+          <td class="displayText">{{surveyResult.calNps() | number: '1.1-2'}}</td>
+          <td><button type="button" class="btn btn-outline-danger btn-sm" (click)="removeSurveyResult(groupIndex, resultIndex)" placement="left" ngbTooltip="Delete This Project">
+            <fa-icon [icon]="btnDeleteIcon"></fa-icon>
+          </button></td>
+        </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="15" class="text-center"><button type="button" class="btn btn-outline-secondary" (click)="addSurveyResult(groupIndex)">Add Project</button></td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  </div>
+</div>
+<div class="footer">
+  <button type="button" class="btn btn-outline-secondary btn-lg" (click)="addSurveyGroup()">Add Project Group</button>
+</div>
+<div class="container-fluid">
+  <div class="d-flex flex-row flex-wrap justify-content-center">
+    <div class="chart-box" style="padding:1rem" *ngFor="let surveyGroup of surveyGroups">
+      <div class="header">Net Promoter Score {{surveyGroup.displayName}}</div>
+      <canvas id="{{surveyGroup.id}}"></canvas>
+    </div>
+  </div>
+</div>
+
 
