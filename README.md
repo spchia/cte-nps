@@ -1,5 +1,16 @@
 # CteNps
-This is a Web Application which allow user to enter survey result and generate Net Promoter Score(NPS).
+This is a Demo Web Application which allow user to enter survey result and generate Net Promoter Score(NPS).
+
+## Dev Requirements
+ - Nodejs (v12 and above)
+ - Angular CLI (v9 and above)
+ - Git (to checkout the code)
+ 
+## Setting up development environment
+- Install Nodejs
+- Install Angular CLI, run `npm install -g @angular/cli`
+- Checkout the code or download code
+- Go to project folder and run `npm install` to install project dependencies
 
 ## Development server
 
