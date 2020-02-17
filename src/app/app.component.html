@@ -48,10 +48,30 @@
             <fa-icon [icon]="btnDeleteIcon"></fa-icon>
           </button></td>
         </tr>
+        <tr [className]="sampleNewProjectRowCssClass(surveyGroup.id)">
+          <td>New Project</td>
+          <td class="displayText">0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="displayText">0.0</td>
+          <td><button type="button" class="btn btn-outline-danger btn-sm"><fa-icon [icon]="btnDeleteIcon"></fa-icon></button></td>
+        </tr>
         </tbody>
         <tfoot>
           <tr>
-            <td colspan="15" class="text-center"><button type="button" class="btn btn-outline-secondary" (click)="addSurveyResult(groupIndex)">Add Project</button></td>
+            <td colspan="15" class="text-center" style="border-top:0">
+              <button type="button" class="btn btn-outline-secondary" (click)="addSurveyResult(groupIndex)" (mouseenter)="setHighlightSurveyGroupId(surveyGroup.id)" (mouseleave)="unsetHighlightSurveyGroupId() " >
+                Add Project</button>
+            </td>
           </tr>
         </tfoot>
       </table>
@@ -59,7 +79,56 @@
   </div>
 </div>
 <div class="footer">
-  <button type="button" class="btn btn-outline-secondary btn-lg" (click)="addSurveyGroup()">Add Project Group</button>
+  <button type="button" class="btn btn-outline-secondary btn-lg" (click)="addSurveyGroup()" (mouseenter)="showHintGroupNew()" (mouseleave)="hideHintGroupNew()">Add Project Group</button>
+</div>
+<div [ngClass]="{'container-fluid': true, 'group-new-show':isShowHintGroupNew, 'group-new-hide':!isShowHintGroupNew}">
+  <div class="container survey-group">
+    <div class="group-name">
+      <input class="textEditor" style="width:80%" value="Survey Group Name" maxlength="50" />
+    </div>
+    <div class="table-responsive">
+      <table class="table" id="table-new">
+        <thead class="thead-dark">
+        <tr>
+          <th>Project</th>
+          <th>Students</th>
+          <th class="col-detractor">0</th>
+          <th class="col-detractor">1</th>
+          <th class="col-detractor">2</th>
+          <th class="col-detractor">3</th>
+          <th class="col-detractor">4</th>
+          <th class="col-detractor">5</th>
+          <th class="col-detractor">6</th>
+          <th>7</th>
+          <th>8</th>
+          <th class="col-promoter">9</th>
+          <th class="col-promoter">10</th>
+          <th>NPS</th>
+          <th></th>
+        </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>New Project</td>
+            <td class="displayText">0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td class="displayText">0.0</td>
+            <td>&nbsp;</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>
 <div class="container-fluid">
   <div class="d-flex flex-row flex-wrap justify-content-center">

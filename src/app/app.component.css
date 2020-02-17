@@ -16,12 +16,31 @@
   color: #ca96fa;
 }
 
+.table tr.project-new-show{
+  opacity: 0.3;
+  animation: pulse 2s infinite;
+}
+
+.table tr.project-new-hide{
+  opacity: 0;
+}
+
 .container.survey-group{
   margin-bottom: 2rem;
 }
 
 .survey-group .group-name{
   font-size: 1.5rem;
+}
+
+.group-new-hide {
+  display: none;
+}
+
+.group-new-show {
+  display: block;
+  opacity: 0.3;
+  animation: pulse 2s infinite;
 }
 
 .chart-box{
@@ -88,4 +107,22 @@
   color: #fff;
   background-color: #5a6268;
   border-color: #545b62;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0.1;
+  }
+  20% {
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 0.3;
+  }
+  75% {
+    opacity: 0.2;
+  }
+  100% {
+    opacity: 0.1;
+  }
 }

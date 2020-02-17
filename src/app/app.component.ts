@@ -16,6 +16,8 @@ export class AppComponent implements OnInit, AfterViewInit {
   surveyGroups: SurveyGroup[];
   btnDeleteIcon = faTrash;
   btnReport = faFileDownload;
+  isShowHintGroupNew = false;
+  highlightedSurveyGroupId;
 
   constructor() {
   }
@@ -29,6 +31,30 @@ export class AppComponent implements OnInit, AfterViewInit {
     for (const surveyGroup of this.surveyGroups) {
       surveyGroup.uiCreateChart();
     }
+  }
+
+  setHighlightSurveyGroupId(surveyGroupId) {
+    this.highlightedSurveyGroupId = surveyGroupId;
+  }
+
+  unsetHighlightSurveyGroupId() {
+    this.highlightedSurveyGroupId = null;
+  }
+
+  sampleNewProjectRowCssClass(surveyGroupId) {
+    if ( surveyGroupId === this.highlightedSurveyGroupId ) {
+      return 'project-new-show';
+    }
+
+    return 'project-new-hide';
+  }
+
+  showHintGroupNew() {
+    this.isShowHintGroupNew = true;
+  }
+
+  hideHintGroupNew() {
+    this.isShowHintGroupNew = false;
   }
 
   addSurveyGroup() {
